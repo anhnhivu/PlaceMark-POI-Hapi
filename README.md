@@ -5,5 +5,10 @@
 - Cookie Authentication
 - MongoDB
 
+## Version 0.2.0
+- Use JWT authentication
+- Create user APIs
+- Add tests for user APIs -> not running
+
 ## Attribute
 image: Flaticon.com
