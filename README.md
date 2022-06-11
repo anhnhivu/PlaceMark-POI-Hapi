@@ -8,7 +8,7 @@
 ## Version 0.2.0
 - Use JWT authentication
 - Create user APIs
-- Add tests for user APIs -> not running
+- Add tests for user APIs 
 
 ## Attribute
 image: Flaticon.com

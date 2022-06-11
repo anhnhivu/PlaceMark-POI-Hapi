@@ -30,7 +30,7 @@ suite("User API tests", () => {
 
   test("Delete All Users", async () => {
     let returnedUsers = await placemarkService.getAllUsers();
-    assert.equal(returnedUsers.length, 5);
+    assert.equal(returnedUsers.length, 6);
     await placemarkService.deleteAllUsers();
     await placemarkService.createUser(sam);
     await placemarkService.authenticate(samCredentials);
