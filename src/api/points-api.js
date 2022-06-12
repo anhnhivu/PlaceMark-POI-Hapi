@@ -34,7 +34,9 @@ export const pointsApi = {
         request.payload.name,
         request.payload.zipCode,
         request.auth.credentials,
-        category
+        category,
+        request.payload.lat,
+        request.payload.lng,
       );
       return point;
     },

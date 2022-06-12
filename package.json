@@ -1,6 +1,6 @@
 {
   "name": "placemark-poi-hapi",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "",
   "main": "src/server.js",
   "type": "module",

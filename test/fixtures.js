@@ -60,13 +60,19 @@ export const testPoints = [
 {
     name: "Gesslerheim",
     zipCode: "93051",
+    lat: "49.00514526265753", 
+    lng: "12.070902491875282",
 },
 {
     name: "Untere Bachgasse",
     zipCode: "93047",
+    lat: "49.01928958824416", 
+    lng: "12.094919198051345",
 },
 {
     name: "Netto Marken-Discount",
     zipCode: "93051",
+    lat: "49.00483243679845",
+    lng: "12.06905198768946",
 },
 ];

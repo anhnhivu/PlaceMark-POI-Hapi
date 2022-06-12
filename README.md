@@ -14,5 +14,8 @@
 - Add Point, Category model, seed data
 - Add tests for point and category APIs
 
+## Version 0.4.0
+- Add lat, lng to Point
+
 ## Attribute
 image: Flaticon.com

@@ -13,7 +13,7 @@ const seedLib = seeder.default;
 async function seed() {
   const seedObj = seedLib(Mongoose);
   const dbData = await seedObj.seed(seedData, { dropDatabase: false, dropCollections: true });
-  // console.log(dbData);
+  console.log(dbData);
 }
 
 export function connectMongo() {
