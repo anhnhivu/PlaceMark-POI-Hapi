@@ -1,3 +1,18 @@
-<div class="box">
-  <p> All places </p>
-</div>
+<table class="table is-fullwidth">
+  <thead>
+    <th>Name</th>
+    <th>Zip Code</th>
+    <th>Added By</th>
+    <th>Category</th>
+  </thead>
+  <tbody>
+    {{#each points}}
+      <tr>
+        <td> {{name}} </td>
+        <td> {{zipCode}} </td>
+        <td> {{addedBy.firstName}} {{addedBy.lastName}} </td>
+        <td> {{category.name}} </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -10,5 +10,9 @@
 - Create user APIs
 - Add tests for user APIs 
 
+## Version 0.3.0
+- Add Point, Category model, seed data
+- Add tests for point and category APIs
+
 ## Attribute
 image: Flaticon.com

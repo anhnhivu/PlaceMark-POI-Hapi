@@ -44,3 +44,29 @@ export const testUsers = [
         password: "bedifferent",
     },
 ];
+
+export const testCategories = [
+    {
+        name: "Dormitory",
+        type: "dorm",
+    },
+    {
+        name: "Supermarket",
+        type: "supermarket",
+    },
+  ];
+  
+export const testPoints = [
+{
+    name: "Gesslerheim",
+    zipCode: "93051",
+},
+{
+    name: "Untere Bachgasse",
+    zipCode: "93047",
+},
+{
+    name: "Netto Marken-Discount",
+    zipCode: "93051",
+},
+];

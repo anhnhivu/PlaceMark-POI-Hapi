@@ -37,4 +37,20 @@ export const placemarkService = {
   async clearAuth() {
     axios.defaults.headers.common.Authorization = "";
   },
+
+  async addPoint(id, point) {
+    const response = await axios.post(`${this.placemarkUrl}/api/categories/${id}/points`, point);
+    return response.data;
+  },
+
+  async getPoints(id) {
+    const response = await axios.get(`${this.placemarkUrl}/api/categories/${id}/points`);
+    return response.data;
+  },
+
+  async createCategory(newCategory) {
+    const response = await axios.post(`${this.placemarkUrl}/api/categories`, newCategory);
+    return response.data;
+  },
+
 };
