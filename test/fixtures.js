@@ -7,6 +7,19 @@ export const sam = {
     password: "fireonfire",
 };
 
+export const admin = {
+    firstName: "admin",
+    lastName: "account",
+    email: "admin@mail.com",
+    password: "admin-secret-password",
+    role: "admin",
+}
+
+export const adminCredentials = {
+    email: "admin@mail.com",
+    password: "admin-secret-password",
+}
+
 export const samCredentials = {
   email: "sam@smith.com",
   password: "fireonfire",

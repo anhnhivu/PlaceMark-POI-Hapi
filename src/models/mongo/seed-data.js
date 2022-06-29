@@ -1,6 +1,13 @@
 export const seedData = {
   users: {
     _model: "User",
+    testAdmin: {
+      firstName: "admin",
+      lastName: "account",
+      email: "admin@mail.com",
+      password: "admin-secret-password",
+      role: "admin",
+    },
     testuser: {
       firstName: "Sam",
       lastName: "Smith",

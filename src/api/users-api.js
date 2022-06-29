@@ -50,6 +50,20 @@ export const userApi = {
     },
   },
 
+  deleteOne: {
+    auth:  {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        await db.userStore.deleteUserById(request.params.id);
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+  },
+
   deleteAll: {
     auth: {
       strategy: "jwt",
@@ -77,7 +91,8 @@ export const userApi = {
           return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
-        return h.response({ success: true, token: token }).code(201);
+        const isAdmin = (user.role === "admin");
+        return h.response({ success: true, token: token, isAdmin: isAdmin }).code(201);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }

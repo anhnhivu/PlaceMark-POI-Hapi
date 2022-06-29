@@ -17,5 +17,12 @@
 ## Version 0.4.0
 - Add lat, lng to Point
 
+## Version 1.0.0
+- Pre-release
+
+## Version 1.0.1
+- Add admin to authentication response
+- Add remove one user API
+
 ## Attribute
-image: Flaticon.com
+image: Flaticon.com, unsplash.com
