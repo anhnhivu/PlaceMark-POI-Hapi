@@ -5,6 +5,7 @@
 notes.md
 .firebaserc
 .github/workflows
+firebase.json
 
 # Logs
 logs
