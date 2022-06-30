@@ -1,31 +1,42 @@
 # PlaceMark-POI-Hapi
 
-## Version 0.1.0
-- Sign up/ Log in/ Log out
-- Cookie Authentication
-- MongoDB
+## Project Description
+The backend application aims to create a database and APIs for PlaceMark-POI project. 
 
-## Version 0.2.0
-- Use JWT authentication
-- Create user APIs
-- Add tests for user APIs 
+The database comprises of three collections: categories, points, and users. Sample data in the database are dormitories, supermarkets, postal offices and hospitals in Regensburg. The categories are fixed to the four mentioned.
 
-## Version 0.3.0
-- Add Point, Category model, seed data
-- Add tests for point and category APIs
+The API are documented using OpenAPI and can be accessed via `https://dry-cove-28267.herokuapp.com/documentation`. 
 
-## Version 0.4.0
-- Add lat, lng to Point
+You can see the frontend application at `https://github.com/anhnhivu/PlaceMark-POI-Svelte`. [Link](https://github.com/anhnhivu/PlaceMark-POI-Svelte).
 
-## Version 1.0.0
-- Pre-release
+## Techology
+- Runtime environment: Node.js
+- Language: JavaScript
+- Framework: Hapi
+- Database: MongoDB
+- Testing: mocha, chai
+- Database Deployment: <b>Cloud Atlas</b>
+- Backend Deployment: [Heroku](https://dry-cove-28267.herokuapp.com/) 
+- Documentation: [OpenAPI](https://dry-cove-28267.herokuapp.com/documentation)
 
-## Version 1.1.0
-- Add admin to authentication response
-- Add remove one user API
-- Add find one point API
-- Upload images to Cloudinary
-- Modify Point schema: add image, description
+## Usage
 
-## Attribute
-image: Flaticon.com
+To run this applicaton, ensure that mongodb is installed and configure the `.env` file.
+
+```
+db=mongodb://localhost/placemark
+cookie_name=example-cookie-name
+cookie_password=example-cookie-password
+```
+
+In the project folder, run
+
+```
+npm install
+npm run dev
+```
+
+The project should be running on `http://localhost:4000/`.
+
+## Attributes
+image: `flaticon.com`
