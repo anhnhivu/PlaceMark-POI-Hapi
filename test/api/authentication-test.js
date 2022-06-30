@@ -2,7 +2,6 @@ import { assert } from "chai";
 import { placemarkService } from "./placemark-service.js";
 import { decodeToken } from "../../src/api/jwt-utils.js";
 import { sam } from "../fixtures.js";
-import { db } from "../../src/models/db.js";
 
 suite("Authentication API tests", async () => {
   setup(async () => {

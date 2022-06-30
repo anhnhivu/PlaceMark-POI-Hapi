@@ -1,6 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { createToken } from "./jwt-utils.js";
+import { IdSpec, UserSpec, UserSignUpSpec, UserCredentialSpec, UserArray, AuthResponse } from "./joi-schemas.js";
 
 export const userApi = {
   find: {
@@ -15,6 +16,10 @@ export const userApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Get all users",
+    notes: "Returns details of all users",
+    response: { schema: UserArray }
   },
 
   findOne: {
@@ -33,6 +38,15 @@ export const userApi = {
         return Boom.serverUnavailable("No User with this id");
       }
     },
+    tags: ["api"],
+    description: "Get a specific user",
+    notes: "Returns user details",
+    validate: {
+      params: {
+          id: IdSpec
+      }
+    },
+    response: { schema: UserSpec }
   },
 
   create: {
@@ -46,6 +60,35 @@ export const userApi = {
         return Boom.badImplementation("Error Creating User");
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Create a user",
+    notes: "For user to sign up",
+    validate: {
+      payload: UserSignUpSpec,
+    },
+    response: { schema: UserSpec }
+  },
+
+  deleteOne: {
+    auth:  {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        await db.userStore.deleteUserById(request.params.id);
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Delete a user",
+    notes: "Delete one user by Id",
+    validate: {
+      params: {
+        id: IdSpec,
       }
     },
   },
@@ -62,6 +105,9 @@ export const userApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all users",
+    notes: "Delete all users",
   },
 
   authenticate: {
@@ -77,10 +123,18 @@ export const userApi = {
           return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
-        return h.response({ success: true, token: token }).code(201);
+        const isAdmin = (user.role === "admin");
+        return h.response({ success: true, token: token, isAdmin: isAdmin }).code(201);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Authenticate a user",
+    notes: "Validate user",
+    validate: {
+      payload: UserCredentialSpec,
+    },
+    response: { schema: AuthResponse },
   },
 };

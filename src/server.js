@@ -7,14 +7,23 @@ import jwt from "hapi-auth-jwt2";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import HapiSwagger from "hapi-swagger";
 import { validate } from "./api/jwt-utils.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
+import Joi from "joi";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const swaggerOptions = {
+  info: {
+    title: "Placemark API",
+    version: "1.0",
+  },
+};
 
 const result = dotenv.config();
 if (result.error) {
@@ -27,10 +36,18 @@ async function init() {
     routes: { cors: true },
   });
 
-  await server.register(Inert);
-  await server.register(Vision);
-  await server.register(Cookie);
-  await server.register(jwt);
+  await server.register([
+    Inert,
+    Vision,
+    Cookie,
+    jwt,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
+
+  server.validator(Joi);
 
   server.views({
     engines: {

@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
-import { sam, samCredentials, testUsers } from "../fixtures.js";
+import { sam, samCredentials, testUsers, admin, adminCredentials } from "../fixtures.js";
 import { db } from "../../src/models/db.js";
 
 const users = new Array(testUsers.length);
@@ -64,5 +64,45 @@ suite("User API tests", () => {
       assert(error.response.data.message === "No User with this id");
       assert.equal(error.response.data.statusCode, 404);
     }
+  });
+  test("Check Admin Account", async () => {
+    // Check Later
+    const newUser = await placemarkService.createUser(admin);
+    const returnedUser = await placemarkService.getUser(newUser._id);
+    assert(returnedUser.role === "admin");
+
+    const response = await placemarkService.authenticate(adminCredentials);
+    assert.equal(response.isAdmin, true);
+  });
+
+  test("Check User Account", async () => {
+    // Check Later
+
+    const newUser2 = await placemarkService.createUser(sam);
+    const returnedUser2 = await placemarkService.getUser(newUser2._id);
+    assert(returnedUser2.role === "user");
+
+    const response2 = await placemarkService.authenticate(samCredentials);
+    assert.equal(response2.isAdmin, false);
+  });
+
+  test("Delete One User", async () => {
+    const returnedUsers = await placemarkService.getAllUsers();
+    assert.equal(returnedUsers.length, 6);
+
+    await placemarkService.deleteOneUser(users[0]._id);
+
+    const currentUsers = await placemarkService.getAllUsers();
+    assert.equal(currentUsers.length, 5);
+  });
+
+  test("Delete One User - ID not existed", async () => {
+    const returnedUsers = await placemarkService.getAllUsers();
+    assert.equal(returnedUsers.length, 6);
+
+    await placemarkService.deleteOneUser(2048);
+
+    const currentUsers = await placemarkService.getAllUsers();
+    assert.equal(currentUsers.length, 6);
   });
 });

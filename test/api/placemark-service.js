@@ -28,6 +28,16 @@ export const placemarkService = {
     return res.data;
   },
 
+  async deleteAllPoints() {
+    const res = await axios.delete(`${this.placemarkUrl}/api/points`);
+    return res.data;
+  },
+
+  async deleteOneUser(id) {
+    const res = await axios.get(`${this.placemarkUrl}/api/users/deleteuser/${id}`);
+    return res.data;
+  },
+
   async authenticate(user) {
     const response = await axios.post(`${this.placemarkUrl}/api/users/authenticate`, user);
     axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
@@ -45,6 +55,11 @@ export const placemarkService = {
 
   async getPoints(id) {
     const response = await axios.get(`${this.placemarkUrl}/api/categories/${id}/points`);
+    return response.data;
+  },
+
+  async getPointById(id) {
+    const response = await axios.get(`${this.placemarkUrl}/api/points/${id}`);
     return response.data;
   },
 
