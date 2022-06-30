@@ -11,14 +11,24 @@ export const pointMongoStore = {
         return points;
     },
 
-    async addPoint(name, zipCode, addedBy, category, lat, lng) {
+    async getPointById(id) {
+        const point = await Point.findOne({ _id: id }).populate("category").lean();
+        return point;
+    },
+
+    async addPoint(name, zipCode, city, addedBy, category, lat, lng, street, houseNumber, img, description) {
         const newPoint = new Point({
             name,
             zipCode,
+            city,
             addedBy: addedBy._id,
             category: category._id,
             lat,
             lng,
+            street,
+            houseNumber,
+            img,
+            description
         });
         await newPoint.save();
         return newPoint;

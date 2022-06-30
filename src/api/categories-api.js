@@ -1,5 +1,6 @@
 import Boom from "@hapi/boom";
 import { Category } from "../models/mongo/category.js";
+import { IdSpec, CategorySpec, CategoriesArray } from "./joi-schemas.js";
 
 export const categoriesApi = {
   find: {
@@ -10,6 +11,10 @@ export const categoriesApi = {
       const categories = await Category.find();
       return categories;
     },
+    tags: ["api"],
+    description: "Get all categories",
+    notes: "Returns details of all categories",
+    response: { schema: CategoriesArray },
   },
 
   findOne: {
@@ -27,6 +32,15 @@ export const categoriesApi = {
         return Boom.notFound("Bad Id - No Category with this Id");
       }
     },
+    tags: ["api"],
+    description: "Get one category",
+    notes: "Returns detail of one category",
+    validate: {
+      params: {
+          id: IdSpec
+      }
+    },
+    response: { schema: CategorySpec },
   },
 
   create: {
@@ -51,6 +65,9 @@ export const categoriesApi = {
       await Category.remove({});
       return { success: true };
     },
+    tags: ["api"],
+    description: "Delete all categories",
+    notes: "Delete all categories",
   },
 
   deleteOne: {
@@ -59,7 +76,7 @@ export const categoriesApi = {
     },
     handler: async function (request, h) {
       const response = await Category.deleteOne({ _id: request.params.id });
-      if (response.deletedCount == 1) {
+      if (response.deletedCount === 1) {
         return { success: true };
       }
       return Boom.notFound("Id not found");

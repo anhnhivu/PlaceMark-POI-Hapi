@@ -11,6 +11,7 @@ export const apiRoutes = [
   { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
 
   { method: "GET", path: "/api/points", config: pointsApi.findAll },
+  { method: "GET", path: "/api/points/{id}", config: pointsApi.findOnePoint },
   { method: "GET", path: "/api/categories/{id}/points", config: pointsApi.findByCategory },
   { method: "POST", path: "/api/categories/{id}/points", config: pointsApi.addPoint },
   { method: "DELETE", path: "/api/points", config: pointsApi.deleteAll },

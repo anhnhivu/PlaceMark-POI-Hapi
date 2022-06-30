@@ -20,9 +20,12 @@
 ## Version 1.0.0
 - Pre-release
 
-## Version 1.0.1
+## Version 1.1.0
 - Add admin to authentication response
 - Add remove one user API
+- Add find one point API
+- Upload images to Cloudinary
+- Modify Point schema: add image, description
 
 ## Attribute
-image: Flaticon.com, unsplash.com
+image: Flaticon.com

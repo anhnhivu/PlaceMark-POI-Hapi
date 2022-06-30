@@ -8,7 +8,8 @@ const pointSchema = new Schema({
     houseNumber: String,
     zipCode: String,
     city: String,
-    country: String,
+    img: String,
+    description: String,
     lat: String,
     lng: String,
     category: {

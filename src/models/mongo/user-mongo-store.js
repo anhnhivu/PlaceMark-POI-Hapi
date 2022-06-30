@@ -30,7 +30,7 @@ export const userMongoStore = {
     try {
       await User.deleteOne({ _id: id });
     } catch (error) {
-      console.log("Bad Id/ Id does not exist");
+      console.log("Bad Id - User Id does not exist");
     }
   },
 
