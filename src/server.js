@@ -8,12 +8,12 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 import HapiSwagger from "hapi-swagger";
+import Joi from "joi";
 import { validate } from "./api/jwt-utils.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { apiRoutes } from "./api-routes.js";
-import Joi from "joi";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -90,7 +90,7 @@ async function init() {
 
 process.on("unhandledRejection", (err) => {
   console.log(err);
-  process.exit(1);
+  // process.exit(1);
 });
 
 await init();

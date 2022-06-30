@@ -3,6 +3,8 @@
 .vscode
 
 notes.md
+.firebaserc
+.github/workflows
 
 # Logs
 logs
